@@ -18,6 +18,8 @@ public class Interfaz2 extends javax.swing.JFrame {
      */
     public Interfaz2() {
         initComponents();
+        txtBono.setEditable(false); 
+        txtSuledo2.setEditable(false);
     }
 
     /**
@@ -77,7 +79,19 @@ public class Interfaz2 extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, -1));
+
+        txtSueldo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSueldo1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtSueldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 80, 30));
+
+        txtHijos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHijosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
@@ -87,6 +101,12 @@ public class Interfaz2 extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         jLabel5.setText("Sueldo final");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        txtBono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBonoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtBono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 90, 30));
 
         txtSuledo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -108,7 +128,7 @@ public class Interfaz2 extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
        String res1,res2;
-       int n1,n2,multi,suma;
+       int n1,n2,multi,suma,error;
        if(txtSueldo1.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this,"Por favor digite su sueldo","Error",JOptionPane.ERROR_MESSAGE);
            txtSueldo1.requestFocusInWindow();
@@ -118,13 +138,18 @@ public class Interfaz2 extends javax.swing.JFrame {
        }else {
         n1=Integer.parseInt(txtSueldo1.getText());
         n2=Integer.parseInt(txtHijos.getText());
+        if(n1== 0){
+        JOptionPane.showMessageDialog(this,"Por favor digite su sueldo superior a 0","Error",JOptionPane.ERROR_MESSAGE);
+        txtSueldo1.requestFocusInWindow();
+     
+        }else{
         multi=80000*n2;
         suma=n1+multi;
         res1 = String.valueOf(multi);
         res2 = String.valueOf(suma);
         txtBono.setText(res1);
         txtSuledo2.setText(res2);
-                 
+        }         
        }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -136,6 +161,32 @@ public class Interfaz2 extends javax.swing.JFrame {
         txtSueldo1.requestFocusInWindow();
         
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtBonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBonoKeyTyped
+        // TODO add your handling code her
+    }//GEN-LAST:event_txtBonoKeyTyped
+
+    private void txtSueldo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldo1KeyTyped
+char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar())){ 
+              getToolkit().beep(); 
+               
+              evt.consume();   
+          }
+    }//GEN-LAST:event_txtSueldo1KeyTyped
+
+    private void txtHijosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHijosKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar()) ){ 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtHijosKeyTyped
 
     /**
      * @param args the command line arguments
