@@ -52,11 +52,11 @@ public class Interfaz2 extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel2.setText("Sueldo base");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel3.setText("Catidad de hijos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         cmdCalcular.setForeground(new java.awt.Color(0, 153, 51));
@@ -71,18 +71,23 @@ public class Interfaz2 extends javax.swing.JFrame {
         cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         cmdBorrar.setForeground(new java.awt.Color(153, 51, 0));
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, -1));
         jPanel1.add(txtSueldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 80, 30));
-        jPanel1.add(txtHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 80, 30));
+        jPanel1.add(txtHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
         jLabel4.setText("Bono por Hijos");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         jLabel5.setText("Sueldo final");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-        jPanel1.add(txtBono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 90, -1));
+        jPanel1.add(txtBono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 90, 30));
 
         txtSuledo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(txtSuledo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 100, -1));
@@ -103,7 +108,7 @@ public class Interfaz2 extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
        String res1,res2;
-       double n1,n2,multi,suma;
+       int n1,n2,multi,suma;
        if(txtSueldo1.getText().trim().isEmpty()){
            JOptionPane.showMessageDialog(this,"Por favor digite su sueldo","Error",JOptionPane.ERROR_MESSAGE);
            txtSueldo1.requestFocusInWindow();
@@ -111,8 +116,8 @@ public class Interfaz2 extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this,"Por favor dijite la cantidad de hijos que tiene","Error",JOptionPane.ERROR_MESSAGE);
          txtHijos.requestFocusInWindow();
        }else {
-        n1=Double.parseDouble(txtSueldo1.getText());
-        n2=Double.parseDouble(txtHijos.getText());
+        n1=Integer.parseInt(txtSueldo1.getText());
+        n2=Integer.parseInt(txtHijos.getText());
         multi=80000*n2;
         suma=n1+multi;
         res1 = String.valueOf(multi);
@@ -122,6 +127,15 @@ public class Interfaz2 extends javax.swing.JFrame {
                  
        }
     }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+        txtSueldo1.setText("");
+        txtHijos.setText("");
+        txtBono.setText("");
+        txtSuledo2.setText("");
+        txtSueldo1.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
