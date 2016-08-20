@@ -5,6 +5,8 @@
  */
 package interaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesus
@@ -27,21 +29,99 @@ public class Interfaz2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cmdCalcular = new javax.swing.JToggleButton();
+        cmdBorrar = new javax.swing.JButton();
+        txtSueldo1 = new javax.swing.JTextField();
+        txtHijos = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtBono = new javax.swing.JTextField();
+        txtSuledo2 = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24)); // NOI18N
+        jLabel1.setText("Sueldo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        jLabel2.setText("Sueldo base");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        jLabel3.setText("Catidad de hijos");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+
+        cmdCalcular.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        cmdCalcular.setForeground(new java.awt.Color(0, 153, 51));
+        cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 110, 30));
+
+        cmdBorrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        cmdBorrar.setForeground(new java.awt.Color(153, 51, 0));
+        cmdBorrar.setText("Borrar");
+        jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, -1));
+        jPanel1.add(txtSueldo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 80, 30));
+        jPanel1.add(txtHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 80, 30));
+
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 11)); // NOI18N
+        jLabel4.setText("Bono por Hijos");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        jLabel5.setText("Sueldo final");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        jPanel1.add(txtBono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 90, -1));
+
+        txtSuledo2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel1.add(txtSuledo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+       String res1,res2;
+       double n1,n2,multi,suma;
+       if(txtSueldo1.getText().trim().isEmpty()){
+           JOptionPane.showMessageDialog(this,"Por favor digite su sueldo","Error",JOptionPane.ERROR_MESSAGE);
+           txtSueldo1.requestFocusInWindow();
+       }else if (txtHijos.getText().trim().isEmpty()){
+         JOptionPane.showMessageDialog(this,"Por favor dijite la cantidad de hijos que tiene","Error",JOptionPane.ERROR_MESSAGE);
+         txtHijos.requestFocusInWindow();
+       }else {
+        n1=Double.parseDouble(txtSueldo1.getText());
+        n2=Double.parseDouble(txtHijos.getText());
+        multi=80000*n2;
+        suma=n1+multi;
+        res1 = String.valueOf(multi);
+        res2 = String.valueOf(suma);
+        txtBono.setText(res1);
+        txtSuledo2.setText(res2);
+                 
+       }
+    }//GEN-LAST:event_cmdCalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,7 +150,7 @@ public class Interfaz2 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Interfaz2().setVisible(true);
@@ -79,5 +159,17 @@ public class Interfaz2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JToggleButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtBono;
+    private javax.swing.JTextField txtHijos;
+    private javax.swing.JTextField txtSueldo1;
+    private javax.swing.JTextField txtSuledo2;
     // End of variables declaration//GEN-END:variables
 }
